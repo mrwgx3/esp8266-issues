@@ -58,11 +58,13 @@ Debug Level:     None, Core, or Core+Wifi
 
 ### Sketch Outline
 
+```
 The sketch included at the end of this post is used to:
 1. Place the ESP12 in AP + STA mode
 2. Configure and start the AP side
 3. Statically connect to the home network on the STA side
 4. Start a minimal web server to check for connectivity
+```
 
 ### History
 
@@ -331,7 +333,7 @@ void setup ( void ) {
   WiFi.softAPdisconnect( false );    // Wifi already OFF  
 
   Serial.println( "Configuring as AP+STA" );
-  WiFi.mode( WIFI_AP );
+  WiFi.mode( WIFI_AP_STA );
 
   Serial.println("Setting soft-AP configuration ... ");
   Serial.println( WiFi.softAPConfig(local_IP, gateway, subnet) ? "Ready" : "Failed!");
