@@ -17,7 +17,7 @@ SDK:  1.5.3_16_04_18
 
 ### Description
 
-While studying how millis()[millis_esp] and micros()[micros_esp] work in order to extending them to 64-bits, I noticed an approximation[millis_approx] in the millis() function which causes the returned millisecond value to incrementally drift 296us / ~71 minutes (2^32 us) of operation. This drift is cumlative, i.e., does not reset upon roll-over of millis(). The sketch included at the end of this post demonstrates the drift, and gives some corrections.
+While studying how [millis()][millis_esp] and [micros()][micros_esp] work in order to extending them to 64-bits, I noticed an [approximation][millis_approx] in the millis() function which causes the returned millisecond value to incrementally drift 296us / ~71 minutes (2^32 us) of operation. This drift is cumlative, i.e., does not reset upon roll-over of millis(). The sketch included at the end of this post demonstrates the drift, and gives some corrections.
 
 [millis_esp]: https://github.com/esp8266/Arduino/blob/master/cores/esp8266/core_esp8266_wiring.c#L64#L68  "Millis() Function"
 [micros_esp]: https://github.com/esp8266/Arduino/blob/master/cores/esp8266/core_esp8266_wiring.c#L70#L72  "Micros() function"
@@ -148,7 +148,7 @@ unsigned long ICACHE_RAM_ATTR millis_orig ( void )
 } //millis_orig
 
 //---------------------------------------------------------------------------
-// Corrected millis(), truncated 64-bit arithmetic
+// Corrected millis(), 64-bit arithmetic, truncated to 32-bits by return
 unsigned long ICACHE_RAM_ATTR millis_corr( void )
 {
   uint32_t m = system_get_time();
@@ -191,6 +191,7 @@ unsigned long ICACHE_RAM_ATTR millis_altn ( void )
   // High/low words of 'c'
   uint16_t chi = c >> 16, clo = c & 0xFFFF;
 
+  // Note that truncation of 'c * 4294967' is explicitly enforced
   return (
            (uint32_t)(c * 4294967) + (m / 1000) +
            ((clo * 296 + chi * 656) / 1000) + chi * 19398
