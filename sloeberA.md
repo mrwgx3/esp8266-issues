@@ -5,7 +5,6 @@
 ```
 Hardware:     ESP12, Adafruit Huzzah Breakout and Feather Boards  
 Core Version: 2.3.0
-
 Computer:     Dell, Intel Core i7 CPU, 870 @ 2.93Ghz,  16.0 GB RAM
 ```
 
@@ -19,13 +18,15 @@ IDE:  V4.0_win64.2017-01-17_15-14-48 (stable release)
 
 ### Description
 
-After downloading and doing the default install of V4 for Windows 10, I re-discovered the 'spaces-in-path' issue mentioned in ['Install Advice' under topic 'Windows Comments'][space_in_path]:
+After downloading and doing the default install of V4 for Windows 10, I found the 'spaces-in-path' issue subsequently described in ['Install Advice' under topic 'Windows Comments'][spaces_in_path]:
 ```
-'spaces Windows users keep in mind that spaces cause problems. So do not install the arduino IDE eclipse or Sloeber in "program files". Don't create the workspace in "my documents".'
+'spaces Windows users keep in mind that spaces cause problems. So do not install the arduino IDE eclipse or Sloeber in
+"program files". Don't create the workspace in "my documents".'
 ```
 For those of us which jump first and ask questions later, it would be nice if you could change the default workspace path in future builds such that they don't contain spaces (the workspace shown for my install was 'C:\Users\DELL\My Documents\sloeber-workspace')
 
 Thanks for a job well done!
+
 [spaces_in_path]: http://eclipse.baeyens.it/installAdvice.shtml
 
 ### Requested Install Information
