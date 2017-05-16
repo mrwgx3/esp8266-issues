@@ -8,7 +8,7 @@ Core Version: 2.3.0
 Computer:     Dell, Intel Core i7 CPU, 870 @ 2.93Ghz,  16.0 GB RAM
 ```
 
-#### OS, IDE
+#### OS, IDE, JAVA
 
 ``` 
 OS:   Windows 10 Professional   
@@ -22,6 +22,9 @@ Current stable release
 
 Last successful install
       io.sloeber.product-4.0.1-20170401.212426-33-win32.win32.x86_64
+
+JAVA: Version 8 Update 131 (Build 1.8.0_131-b11)
+
 ```
 
 ### Description
@@ -71,10 +74,11 @@ The SDK install was tested by creating the 'blink' sketch example, then compilin
 
 First some prior history...
 
-My very first attempts at installing the Sloeber IDE were un-successful; the ESP8266 board selections were always missing. [Per advice found on the Arduino forum][wait_besureto], I even waited upwards to 20 minutes after the install seeming completed to insure that it had.
-[wait_besureto]: https://forum.arduino.cc/index.php?topic=413731.0
+My very first attempts at installing the Sloeber IDE were un-successful; the ESP8266 board selections were always missing. [Per advice found on the Arduino forum][spaces_in_path], I even [waited upwards][spaces_in_path] to 20 minutes after the install seeming completed to insure that it had.
 
-Noting that the Windows firewall was interrupting the install to ask for permissions, I then turned off the firewall reasoning that the interruption was the problem, and achieved a SUCCESSFUL INSTALL. Attempts to repeat this failure/recovery were fruitless, as EVERY install thereafter completed successfully; obviously some hidden variable(s) had changed.
+[spaces_in_path]: http://eclipse.baeyens.it/installAdvice.shtml
+
+Noting that the Windows firewall was interrupting the install to ask for permissions, I then turned off the firewall reasoning that the interruption was the problem, and achieved a SUCCESSFUL INSTALL. Attempts to repeat this failure/recovery were fruitless, however, as EVERY install thereafter completed successfully; obviously some hidden variable(s) had changed.
 
 Now back to the present...
 
