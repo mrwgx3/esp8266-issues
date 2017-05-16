@@ -36,7 +36,7 @@ Unable to download http://arduino.esp8266.com/stable/package_esp8266com_index.js
 Server returned HTTP response code: 403 for URL: http://arduino.esp8266.com/stable/package_esp8266com_index.json
 ```
 
-The install then continues until 'make.zip' was being processed, then terminates prematurely. This results in the board libraries for the ESP8266 part not being installed. The work/error log is included at the end of this resport.
+The install then continues until 'make.zip' is being processed, then terminates prematurely. This results in the board libraries for the ESP8266 part not being installed. The work/error log is included at the end of this resport.
 
 Next, I tried to re-install using the current stable version, with similar results, but WITHOUT the 'Problem Occurred' message. The work/error logs were almost identical, with slight differences in line numbers show for Java exceptions. 
 
@@ -74,9 +74,9 @@ The SDK install was tested by creating the 'blink' sketch example, then compilin
 
 First some prior history...
 
-My very first attempts at installing the Sloeber IDE were un-successful; the ESP8266 board selections were always missing. [Per advice found on the Arduino forum][spaces_in_path], I even [waited upwards][spaces_in_path] to 20 minutes after the install seeming completed to insure that it had.
+My very first attempts at installing the Sloeber IDE were un-successful; the ESP8266 board selections were always missing. [Per advice found on the Arduino forum][wait_besure], I even waited upwards to 20 minutes after the install seeming completed to insure that it had.
 
-[spaces_in_path]: http://eclipse.baeyens.it/installAdvice.shtml
+[wait_besure]: https://forum.arduino.cc/index.php?topic=413731.msg3020434#msg3020434
 
 Noting that the Windows firewall was interrupting the install to ask for permissions, I then turned off the firewall reasoning that the interruption was the problem, and achieved a SUCCESSFUL INSTALL. Attempts to repeat this failure/recovery were fruitless, however, as EVERY install thereafter completed successfully; obviously some hidden variable(s) had changed.
 
