@@ -10,7 +10,7 @@ The software provide by both @drmpf and @david-prosee both worked fine, but the 
 
 [twi_status]: https://github.com/esp8266/Arduino/blob/master/cores/esp8266/core_esp8266_si2c.c#L201-L208 "I2C Bus Reset Code"
 
-Note: The following code was used for testing:
+The following code was used for testing:
 ```
 uint8_t  I2CIO::busInit ( void )
 {
