@@ -1,12 +1,12 @@
+### Add 'clockCount' decrement, while-loop, twi_status()
+
+
 While researching solutions for a stalled I2C bus, I found the following issue and pull-request:
 
 I2C bus reset with status info to user, re issue 1025 #2058  
-https://github.com/esp8266/Arduino/pull/2058  
-
 method for recovering I2C bus #1025  
-https://github.com/esp8266/Arduino/issues/1025
 
-The software provide by both @drmpf and @david-prosee both worked fine, but the while-loop inside David's ['twi_status()'][twi_status] seems to be missing a 'clockCount' decrement, as noted in the pull-request by both @Frida854 and @vlast3k. This pull-request adds the missing decrement.
+The software provide by both @drmpf and @dave-prosee both worked fine, but the while-loop inside Dave's ['twi_status()'][twi_status] seems to be missing a 'clockCount' decrement, as noted in pull-request #2058 by both @Frida854 and @vlast3k. This pull-request adds the missing decrement.
 
 [twi_status]: https://github.com/esp8266/Arduino/blob/master/cores/esp8266/core_esp8266_si2c.c#L201-L208 "I2C Bus Reset Code"
 
@@ -30,5 +30,4 @@ uint8_t  I2CIO::busInit ( void )
 
    return( status );
    
-} //busInit
-```
+} //busInit```
