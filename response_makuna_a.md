@@ -78,16 +78,15 @@ As I'm finishing up the above code, however, Maxim sends a final project update 
 recent upturn in bizzare human behavior, Hell's not likely to be experiencing any lack of "cold days"
 either. The standard part will work fine, and the DS3231HE project is shelved until further notice."
 
-No worries, just a final tweek o the constants:
+No worries, just a final tweek of the constants:
 ```
 The original fixed point word/alignment is:
 
       |         r11h          | DP |         r12h         |
 Bit:   15 14 13 12 11 10  9  8   .  7  6  5  4  3  2  1  0  -1 -2 -3
         s  i  i  i  i  i  i  i   .  f  f  0  0  0  0  0  0
-```
 and
-```
+
 RSI_GETFRAC  = 8       to align the LSbit of the integer    part to bit 0
                        (overall word scale-factor is 256)
 RSF_GETFRAC  = 6       to align the LSbit of the fractional part to bit 0
@@ -98,14 +97,11 @@ GetFractional() now returns {0, 25, 50, and 75 }
 ```
 But wait you say, "With the decimal point now falling on a byte boundary, along with the greatly reduced resolution, can't one simplify the code such that AsWholeDegrees() and GetFractional() are only functions
 of 'r11h' and r12h', respectively?
-
-### This is what I assumed you meant by your question, @Makuna. ###
-
-Alas, no, due to the "1's complement + 1" nature of 2's complement (signed) arithmetic.
 ```
-a) Knowing when to negate both integer and fractional portions always needs sign test of the integer part.
-
-b) Adding (1) to a negated integer portion is only required when the original fractional part equals zero,
-   hence requires a test of the fractional part.
+Alas, no, due to the "1's complement + 1" nature of 2's complement (signed) arithmetic:
+   a) Knowing when to negate both integer and fractional portions always needs sign test of the integer part.
+   b) Adding (1) to a negated integer portion is only required when the original fractional part equals zero,
+      hence requires a test of the fractional part.
 ```
 It's inescapable, to write a either a AsWholeDegrees() or GetFractional(), you need both temperature registers.
+#### This is what I assumed you meant by your question, @Makuna. ####
