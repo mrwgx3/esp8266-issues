@@ -72,7 +72,6 @@ uint32_t Proto_GetFractional( int8_t r11h, uint8_t r12h )
    return  SF_GETFRAC *
            ( MASK_FRAC & ((sgnT * wordTemp) >> RSF_GETFRAC) )  // (c-e)
 
-
 } //Proto_GetFractional
 
 As I'm finishing up the above code, however, Maxim sends a final project update quoting Hell's CEO: 
