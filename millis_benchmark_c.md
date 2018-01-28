@@ -3,18 +3,18 @@ Hi All
 It turns out that I had (2) problems with the proposed 'millis()' solution:
 ```
 a) For high values of 'm' and 'c', the calculation exceeded the 32-bit word
-   length used for the calculation. This is why things seem to blow up around
-   (7) years; one which I would consider unacceptably short.
+   length used. This is why things seem to blow up around  (7) years; one
+   which I consider unacceptably short.
 
 b) The approximation occasionally did not match the gold-standard code, and was
    typically off by +/- 1, pretty much throughout the ranges for both 'm' and 'c'.
 
 ```
-The only thing left to explore was to find a fast implementation for the 64-bit arithmetic used by the slow 'gold-standard' routine. After doing a little research, I found that one can do fixed-point division by a constant simply multiplying by a scaled multiplicative inverse of the divisor. These 'magic numbers' are often used by compilers when dividing by small constants. See this link for a good discussion of 'magic numbers':
+The only thing left to explore was to find a fast implementation for the 64-bit arithmetic used by the slow 'gold-standard' routine. After doing a little research, I found that one can do fixed-point division by a constant simply multiplying by a scaled multiplicative inverse of the divisor. These 'magic numbers' are often used by compilers when dividing by small constants. See this link for a good discussion:
 
 http://ridiculousfish.com/blog/posts/labor-of-division-episode-i.html
 
-Given a magic number of 64-bits precision and a divisor (1000) of 10-bits precision, one can divide a dividend with up to 54-bits precision simply by multiplying by the magic number. This corresponds a dividend range of (54 -32 = 22 bits), or 0x400000, which translates to about 570 years of usec counter overflows.
+Given a magic number of 64-bits precision and a divisor of 10-bits precision (1000), one can accurately divide a dividend with up to 54-bits precision simply by multiplying by the magic number. This corresponds a dividend range of (54-32 = 22 bits), or 0x400000, which translates to about 570 years of usec counter overflows.
 ```
 //---------------------------------------------------------------------------
 // millis() 'magic multiplier' approximation
@@ -79,7 +79,7 @@ Millis RunTime Benchmark
 
 *** End, Bench Test ***
 ```
-The magic multiplier ran ~3x faster than the gold-standard. Execution times, however, vary considerably with the numbers being multiplied, so one should probably lower this factor to around x2 worst case.
+The magic multiplier ran ~3x faster than the gold-standard. Execution times, however, vary considerably with the numbers being multiplied, so one should probably lower this factor to the expected worst case of around x2.
 
-Given the trade-offs between complexity and speed, this is best algorithm I've been able to come up with. Got any ideas for improvements? Do we need to generate a pull request?
+Given the trade-offs between complexity and speed, this is best algorithm I've been able to come up with. Got any ideas for improvements? How do wish to proceed?
 
